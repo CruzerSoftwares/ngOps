@@ -1,0 +1,31 @@
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <app-sidebar *ngIf="authenticationService.isLoggedIn()"></app-sidebar>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <!-- Main Content -->
+      <div id="content">
+        <!-- Topbar -->
+        <app-header *ngIf="authenticationService.isLoggedIn()"></app-header>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <router-outlet></router-outlet>
+        
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <app-footer></app-footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->

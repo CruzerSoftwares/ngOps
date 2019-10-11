@@ -1,0 +1,60 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">User Details 
+         <span style="float: right;">
+                <a routerLink="/users" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm mr-1">
+                    <i class="fa fa-arrow-left text-white-50"></i> Back
+                </a>
+                <a routerLink="/users/edit/{{ user.id }}" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm mr-1">
+                    <i class="fa fa-user-edit text-white-50"></i> Edit
+                </a>
+                <a [swal]="deleteSwal" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" href="javascript:;" target="_self">
+                    <i class="fa fa-trash text-white-50"></i> Delete
+                </a>
+                <swal
+                #deleteSwal
+                confirmButtonText= "Yes, delete it!"
+                type="warning"
+                title="Are you sure to delete #{{ user.id }}?"
+                text="This cannot be undone"
+                [showCancelButton]="true"
+                [focusCancel]="true"
+                (confirm)="deleteRecord(user.id)">
+                </swal>
+            </span>
+    </h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold ">User Details </h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <tr>
+                <th>Name</th>
+                <td>{{user.first_name}} {{user.last_name}}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{user.email}}</td>
+            </tr>
+            <tr>  
+                <th>Status</th>
+                <td>{{user.status}}</td>
+            </tr>
+           <tr>  
+                <th>Added On</th>
+                <td>{{user.created_at |  date: 'MMM dd, yyyy, hh:mm a'}}</td>
+            </tr>
+            <tr>  
+                <th>Updated On</th>
+                <td>{{user.updated_at |  date: 'MMM dd, yyyy, hh:mm a'}}</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+    </div>
+
+</div>

@@ -1,0 +1,62 @@
+ <div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">My Profile</h1>
+      <a routerLink="/account/update-password" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+          <i class="fa fa-user-edit text-white-50"></i> Update Password
+      </a>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold ">Details </h6>
+        </div>
+        <div class="card-body">
+           <form novalidate class="user" method="post" [formGroup]="ngForm" (ngSubmit)="update()">
+            <div style="position: absolute;left:-999px;">
+                <input type="email">
+                <input type="password">
+            </div>
+            
+            <div class="form-group row">
+                <label for="first_name" class="col-lg-3 col-md-4 col-sm-6 col-form-label">First Name</label>
+                <div class="col-lg-9 col-md-8 col-sm-6">
+                    <input type="text" class="form-control " placeholder="First Name" formControlName="first_name" #first_name>
+                    <div class="invalid-feedback" *ngIf="ngForm.controls['first_name'].invalid && (ngForm.controls['first_name'].dirty || ngForm.controls['first_name'].touched)">
+                        <span *ngIf="ngForm.controls['first_name'].errors.required">
+                            First Name is required.
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="last_name" class="col-lg-3 col-md-4 col-sm-6 col-form-label">Last Name</label>
+                <div class="col-lg-9 col-md-8 col-sm-6">
+                    <input type="text" class="form-control " placeholder="Last Name" formControlName="last_name" #last_name>
+                    <div class="invalid-feedback" *ngIf="ngForm.controls['last_name'].invalid && (ngForm.controls['last_name'].dirty || ngForm.controls['last_name'].touched)">
+                        <span *ngIf="ngForm.controls['last_name'].errors.required">
+                            Last Name is required.
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="email" class="col-lg-3 col-md-4 col-sm-6 col-form-label">Email</label>
+                <div class="col-lg-9 col-md-8 col-sm-6">
+                    <label for="last_name" class="col-form-label">{{ email }}</label>
+                </div>
+            </div>
+
+            
+            <div class="form-group row">
+                <label class="col-lg-3 col-md-4 col-sm-6 col-form-label"></label>
+                <div class="col-lg-9 col-md-8 col-sm-6">
+                <button class="btn btn-primary" type="submit" [disabled]="ngForm.invalid"> <i class="fa fa-save"></i> Save </button>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+
+  </div>

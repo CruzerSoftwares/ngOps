@@ -1,0 +1,124 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Add User 
+        <span class="float-right">
+            <a routerLink="/users" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm mr-1">
+                <i class="fa fa-arrow-left text-white-50"></i> Back
+            </a>
+        </span>
+    </h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold ">User Details </h6>
+        </div>
+        <div class="card-body">
+            <form novalidate class="user" method="post" [formGroup]="ngForm" (ngSubmit)="add()">
+                <div style="position: absolute;left:-999px;">
+                    <input type="email">
+                    <input type="password">
+                </div>
+               
+                <div class="form-group row">
+                    <label for="first_name" class="col-lg-3 col-md-4 col-sm-6 col-form-label">First Name</label>
+                    <div class="col-lg-9 col-md-8 col-sm-6">
+                        <input type="text" class="form-control " placeholder="First Name" formControlName="first_name" #first_name>
+                        <div class="invalid-feedback" *ngIf="ngForm.controls['first_name'].invalid && (ngForm.controls['first_name'].dirty || ngForm.controls['first_name'].touched)">
+                            <span *ngIf="ngForm.controls['first_name'].errors.required">
+                                First Name is required.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label for="last_name" class="col-lg-3 col-md-4 col-sm-6 col-form-label">Last Name</label>
+                    <div class="col-lg-9 col-md-8 col-sm-6">
+                        <input type="text" class="form-control " placeholder="Last Name" formControlName="last_name" #last_name>
+                        <div class="invalid-feedback" *ngIf="ngForm.controls['last_name'].invalid && (ngForm.controls['last_name'].dirty || ngForm.controls['last_name'].touched)">
+                            <span *ngIf="ngForm.controls['last_name'].errors.required">
+                                Last Name is required.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="email" class="col-lg-3 col-md-4 col-sm-6 col-form-label">Email</label>
+                    <div class="col-lg-9 col-md-8 col-sm-6">
+                            <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter Email Address" formControlName="email" #email>
+                        <div class="invalid-feedback" *ngIf="ngForm.controls['email'].invalid && (ngForm.controls['email'].dirty || ngForm.controls['email'].touched)">
+                            <span *ngIf="ngForm.controls['email'].errors.required">
+                                Email is required.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="password" class="col-lg-3 col-md-4 col-sm-6 col-form-label">Password</label>
+                    <div class="col-lg-9 col-md-8 col-sm-6">
+                        <div class="input-group">
+                            <input type="password" class="form-control" placeholder="Enter Password" formControlName="password" #password [type]="hide ? 'password' : 'text'">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" tabindex="-1" type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                    <i class="fa fa-eye{{hide ? '-slash' : ''}}"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="invalid-feedback" *ngIf="ngForm.controls['password'].invalid && (ngForm.controls['password'].dirty || ngForm.controls['password'].touched)">
+                            <span *ngIf="ngForm.controls['password'].errors.required">
+                                Password is required.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="form-group row">
+                    <label for="confirmPassword" class="col-lg-3 col-md-4 col-sm-6 col-form-label">Confirm Password</label>
+                    <div class="col-lg-9 col-md-8 col-sm-6">
+                    <div class="input-group">
+                            <input type="password" class="form-control" placeholder="Enter Confirm Password" formControlName="confirmPassword" #confirmPassword [type]="hideCon ? 'password' : 'text'">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" tabindex="-1" type="button" (click)="hideCon = !hideCon" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideCon">
+                                    <i class="fa fa-eye{{hideCon ? '-slash' : ''}}"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="invalid-feedback" *ngIf="ngForm.controls['confirmPassword'].invalid && (ngForm.controls['confirmPassword'].dirty || ngForm.controls['confirmPassword'].touched)">
+                            <span *ngIf="ngForm.controls['confirmPassword'].errors.required">
+                                Confirm Password is required.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label for="status" class="col-lg-3 col-md-4 col-sm-6 col-form-label">Status</label>
+                    <div class="col-lg-9 col-md-8 col-sm-6">
+                        <select class="form-control" formControlName="status" #status>
+                            <option value="">-- Select --</option>
+                            <option value="1" selected>Active</option>
+                            <option value="2">Inactive</option>
+                            <option value="3">Blocked</option>
+                        </select>
+                        <div class="invalid-feedback" *ngIf="ngForm.controls['status'].invalid && (ngForm.controls['status'].dirty || ngForm.controls['status'].touched)">
+                            <span *ngIf="ngForm.controls['status'].errors.required">
+                                Status is required.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="form-group row">
+                    <label class="col-lg-3 col-md-4 col-sm-6 col-form-label"></label>
+                    <div class="col-lg-9 col-md-8 col-sm-6">
+                    <button class="btn btn-primary" type="submit" [disabled]="ngForm.invalid"> 
+                        <i class="fa fa-save"></i> Save </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

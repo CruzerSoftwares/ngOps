@@ -1,0 +1,134 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Add Log 
+        <span class="float-right">
+            <a routerLink="/account/logs" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm mr-1">
+                <i class="fa fa-arrow-left text-white-50"></i> Back
+            </a>
+        </span>
+    </h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold ">Log Details </h6>
+        </div>
+        <div class="card-body">
+            <form novalidate class="logs" method="post" [formGroup]="ngForm" (ngSubmit)="add()">
+                <div class="form-group row">
+                    <label for="task" class="col-lg-3 col-md-4 col-sm-6 col-form-label">Task</label>
+                    <div class="col-lg-9 col-md-8 col-sm-6">
+                        <input type="text" class="form-control" placeholder="Task" formControlName="task" #task>
+                        <div class="invalid-feedback" *ngIf="ngForm.controls['task'].invalid && (ngForm.controls['task'].dirty || ngForm.controls['task'].touched)">
+                            <span *ngIf="ngForm.controls['task'].errors.required">
+                                Task is required.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label for="description" class="col-lg-3 col-md-4 col-sm-6 col-form-label">Description</label>
+                    <div class="col-lg-9 col-md-8 col-sm-6">
+                        <textarea class="form-control" placeholder="Description" formControlName="description" #description></textarea>
+                        <div class="invalid-feedback" *ngIf="ngForm.controls['description'].invalid && (ngForm.controls['description'].dirty || ngForm.controls['description'].touched)">
+                            <span *ngIf="ngForm.controls['description'].errors.required">
+                                Description is required.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="form-group row">
+                    <label for="started_at" class="col-lg-3 col-md-4 col-sm-6 col-form-label"><p style="height:21px;">&nbsp;</p>Started At</label>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <p style="height:21px;">&nbsp;</p>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="YYYY-MM-DD" name="started_at" ngbDatepicker #d="ngbDatepicker" formControlName="started_at" #started_at>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="invalid-feedback" *ngIf="ngForm.controls['started_at'].invalid && (ngForm.controls['started_at'].dirty || ngForm.controls['started_at'].touched)">
+                            <span *ngIf="ngForm.controls['started_at'].errors.required">
+                                Started at is required.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="input-group">
+                            <ngb-timepicker formControlName="started_at_time" #started_at_time name="started_at_time"></ngb-timepicker>
+                        </div>
+                        <div class="invalid-feedback" *ngIf="ngForm.controls['started_at_time'].invalid && (ngForm.controls['started_at_time'].dirty || ngForm.controls['started_at_time'].touched)">
+                            <span *ngIf="ngForm.controls['started_at_time'].errors.required">
+                                Started at Time is required.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label for="ended_at" class="col-lg-3 col-md-4 col-sm-6 col-form-label"><p style="height:21px;">&nbsp;</p>Ended At</label>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <p style="height:21px;">&nbsp;</p>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="YYYY-MM-DD" name="ended_at" ngbDatepicker #dd="ngbDatepicker" formControlName="ended_at" #ended_at>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary calendar" (click)="dd.toggle()" type="button">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="invalid-feedback" *ngIf="ngForm.controls['ended_at'].invalid && (ngForm.controls['ended_at'].dirty || ngForm.controls['ended_at'].touched)">
+                            <span *ngIf="ngForm.controls['ended_at'].errors.required">
+                                Ended At is required.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="input-group">
+                            <ngb-timepicker formControlName="ended_at_time" #ended_at_time name="ended_at_time"></ngb-timepicker>
+                        </div>
+                        <div class="invalid-feedback" *ngIf="ngForm.controls['ended_at_time'].invalid && (ngForm.controls['ended_at_time'].dirty || ngForm.controls['ended_at_time'].touched)">
+                            <span *ngIf="ngForm.controls['ended_at_time'].errors.required">
+                                Ended At is required.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="form-group row">
+                    <label for="status" class="col-lg-3 col-md-4 col-sm-6 col-form-label">Status</label>
+                    <div class="col-lg-9 col-md-8 col-sm-6">
+                        <select class="form-control" formControlName="status" #status>
+                            <option value="">-- Select --</option>
+                            <option value="0" selected>In Progress</option>
+                            <option value="1">Completed</option>
+                            <option value="2">Hold</option>
+                            <option value="3">In QA</option>
+                            <option value="4">Cancelled</option>
+                        </select>
+                        <div class="invalid-feedback" *ngIf="ngForm.controls['status'].invalid && (ngForm.controls['status'].dirty || ngForm.controls['status'].touched)">
+                            <span *ngIf="ngForm.controls['status'].errors.required">
+                                Status is required.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="form-group row">
+                    <label class="col-lg-3 col-md-4 col-sm-6 col-form-label"></label>
+                    <div class="col-lg-9 col-md-8 col-sm-6">
+                    <button class="btn btn-primary" type="submit" [disabled]="ngForm.invalid"> 
+                        <i class="fa fa-save"></i> Save </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

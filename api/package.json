@@ -1,0 +1,33 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "ExpressJS API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "start_local": "node -r dotenv/config server.js",
+    "start_pm2": "pm2 start ecosystem.config.js server.js --node-args=\"--require dotenv/config\" --env production",
+    "stop_pm2": "pm2 stop ecosystem.config.js server.js --node-args=\"--require dotenv/config\" --env production"
+  },
+  "author": "RN Kushwaha",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "express-validator": "^6.1.1",
+    "helmet": "^3.21.1",
+    "http-errors": "^1.7.3",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.17.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.1.0",
+    "nodemon": "^1.19.1"
+  }
+}
