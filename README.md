@@ -1,4 +1,4 @@
-# ManageACL
+# ngOps
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.1.
 
@@ -18,9 +18,21 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
    - User Edit
    - User Add
    - User Delete
-   - User Sorting and Pagination
-   - Users Searching
-
+   - User Searching, Sorting and Pagination
+- Attendance management i.e.
+   - Attendance List
+   - Attendance Searching, Sorting and Pagination
+- Task Log management i.e.
+   - Add new Task Log
+   - Task Log List
+   - Task Log Searching, Sorting and Pagination
+- Login management i.e.
+   - Login List of all the users
+   - Login Searching, Sorting and Pagination 
+- Profile management i.e.
+   - Update Profile
+   - Update Password
+   
 ## How to install
 
 Copy the folder to any location in your computer.
